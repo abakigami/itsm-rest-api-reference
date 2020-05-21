@@ -7,7 +7,7 @@ servers:
 - url: /
 tags:
 - name: Root
-  description: The root level of the API
+  description: The root level of the REST API
 - name: Users
   description: Requests against user resources
 - name: Tickets
