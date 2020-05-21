@@ -1,0 +1,786 @@
+openapi: 3.0.1
+info:
+  title: Aportio ITSM REST API reference
+  description: Reference documentation for Aportio's ITSM REST API.
+  version: "0.1"
+servers:
+- url: /
+tags:
+- name: Root
+  description: The root level of the API
+- name: Users
+  description: Requests against user resources
+- name: Tickets
+  description: Requests against ticket resources
+paths:
+  /users:
+    get:
+      tags:
+      - Users
+      summary: GET users resource
+      description: GET the users resource. Returns 200.
+      responses:
+        "200":
+          description: Auto generated using Swagger Inspector
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/inline_response_200'
+              examples:
+                "0":
+                  value: |
+                    {
+                        "total_queried": 4,
+                        "_embedded": {
+                            "users": [
+                                {
+                                    "id": 1,
+                                    "email": [
+                                        "some@user.com"
+                                    ],
+                                    "_created": "",
+                                    "_links": {
+                                        "self": {
+                                            "href": "/users/1"
+                                        }
+                                    }
+                                },
+                                {
+                                    "id": 2,
+                                    "email": [
+                                        "another@user.com",
+                                        "with-multiple@emails.com"
+                                    ],
+                                    "_created": "",
+                                    "_links": {
+                                        "self": {
+                                            "href": "/users/2"
+                                        }
+                                    }
+                                },
+                                {
+                                    "id": 3,
+                                    "email": [
+                                        "foo@foobar.com"
+                                    ],
+                                    "_created": "",
+                                    "_links": {
+                                        "self": {
+                                            "href": "/users/3"
+                                        }
+                                    }
+                                },
+                                {
+                                    "id": 4,
+                                    "email": [
+                                        "someone@somewhere.com"
+                                    ],
+                                    "_created": "",
+                                    "_links": {
+                                        "self": {
+                                            "href": "/users/4"
+                                        }
+                                    }
+                                }
+                            ]
+                        },
+                        "_links": {
+                            "self": {
+                                "href": "/users"
+                            },
+                            "contained_in": {
+                                "href": "/"
+                            }
+                        }
+                    }
+      servers:
+      - url: https://ccfa5f41.au.ngrok.io
+    servers:
+    - url: https://ccfa5f41.au.ngrok.io
+  /tickets:
+    get:
+      tags:
+      - Tickets
+      summary: GET ticket resources
+      description: GET all ticket resources. Returns 200.
+      responses:
+        "200":
+          description: Auto generated using Swagger Inspector
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/inline_response_200_1'
+              examples:
+                "0":
+                  value: |
+                    {
+                        "total_queried": 4,
+                        "_embedded": {
+                            "tickets": [
+                                {
+                                    "id": 1,
+                                    "aportio_id": "1111",
+                                    "customer_id": 1,
+                                    "user_id": 1,
+                                    "short_title": "Broken laptop",
+                                    "_created": "2020-04-12T14:39:+13:00",
+                                    "status": "OPEN",
+                                    "classification": "incident",
+                                    "_links": {
+                                        "self": {
+                                            "href": "/tickets/1"
+                                        }
+                                    }
+                                },
+                                {
+                                    "id": 2,
+                                    "aportio_id": "2222",
+                                    "customer_id": 2,
+                                    "user_id": 2,
+                                    "short_title": "Need a new license for Office",
+                                    "_created": "2020-04-12T14:39:+13:00",
+                                    "status": "CLOSED",
+                                    "classification": "service-request",
+                                    "_links": {
+                                        "self": {
+                                            "href": "/tickets/2"
+                                        }
+                                    },
+                                    "_updated": "2020-04-12T14:39:+13:00"
+                                },
+                                {
+                                    "id": 3,
+                                    "aportio_id": "4321",
+                                    "customer_id": 1,
+                                    "user_id": 3,
+                                    "short_title": "This is a test",
+                                    "_created": "2020-05-13T21:32:07.199672",
+                                    "status": "OPEN",
+                                    "classification": "(none)",
+                                    "_links": {
+                                        "self": {
+                                            "href": "/tickets/3"
+                                        }
+                                    },
+                                    "_updated": "2020-05-13T21:32:07.199672"
+                                },
+                                {
+                                    "id": 4,
+                                    "aportio_id": "1239",
+                                    "customer_id": 1,
+                                    "user_id": 4,
+                                    "short_title": "This is a test",
+                                    "_created": "2020-05-14T07:52:35.192934",
+                                    "status": "OPEN",
+                                    "classification": "(none)",
+                                    "_links": {
+                                        "self": {
+                                            "href": "/tickets/4"
+                                        }
+                                    },
+                                    "_updated": "2020-05-14T07:52:35.192934"
+                                }
+                            ]
+                        },
+                        "_links": {
+                            "self": {
+                                "href": "/tickets"
+                            },
+                            "contained_in": {
+                                "href": "/"
+                            }
+                        }
+                    }
+      servers:
+      - url: https://ccfa5f41.au.ngrok.io
+    servers:
+    - url: https://ccfa5f41.au.ngrok.io
+  /tickets/1:
+    get:
+      tags:
+      - Tickets
+      summary: GET ticket resources for a specific user
+      description: GET the ticket resources for a specific user by user ID. Returns
+        200 if valid. Returns 404 if user ID doesn't exist.
+      responses:
+        "200":
+          description: Auto generated using Swagger Inspector
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/inline_response_200_2'
+              examples:
+                "0":
+                  value: |
+                    {
+                        "id": 1,
+                        "aportio_id": "1111",
+                        "customer_id": 1,
+                        "short_title": "Broken laptop",
+                        "long_text": "My laptop is broken. It won't boot anymore. Need help.",
+                        "user_id": 1,
+                        "_created": "2020-04-12T14:39:+13:00",
+                        "status": "OPEN",
+                        "classification": {
+                            "l1": "incident",
+                            "l2": "hardware"
+                        },
+                        "custom_fields": {
+                            "department": "marketing"
+                        },
+                        "_embedded": {
+                            "comments": [
+                                {
+                                    "id": 2,
+                                    "user_id": 1,
+                                    "text": "Can I please have an update on this?",
+                                    "_created": "2020-05-14T14:09:26.813168",
+                                    "_links": {
+                                        "self": {
+                                            "href": "/comments/2"
+                                        }
+                                    },
+                                    "_updated": "2020-05-14T14:09:26.813168"
+                                }
+                            ],
+                            "worknotes": [
+                                {
+                                    "id": 1,
+                                    "user_id": 2,
+                                    "text": "Has there been a follow up?",
+                                    "_created": "2020-05-14T14:09:25.431621",
+                                    "_links": {
+                                        "self": {
+                                            "href": "/comments/1"
+                                        }
+                                    },
+                                    "_updated": "2020-05-14T14:09:25.431621"
+                                }
+                            ]
+                        },
+                        "_links": {
+                            "self": {
+                                "href": "/tickets/1"
+                            },
+                            "contained_in": {
+                                "href": "/tickets"
+                            },
+                            "customer": {
+                                "href": "/customers/1"
+                            },
+                            "user": {
+                                "href": "/users/1"
+                            }
+                        }
+                    }
+      servers:
+      - url: https://ccfa5f41.au.ngrok.io
+    servers:
+    - url: https://ccfa5f41.au.ngrok.io
+  /users/1/tickets:
+    get:
+      tags:
+      - Users
+      summary: GET ticket resources for a specific user
+      description: GET the ticket resources for a specific user by user ID. Returns
+        200 if the user ID is valid. Returns 404 if the user ID doesn't exist.
+      responses:
+        "200":
+          description: Auto generated using Swagger Inspector
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/inline_response_200_1'
+              examples:
+                "0":
+                  value: |
+                    {
+                        "total_queried": 1,
+                        "_embedded": {
+                            "tickets": [
+                                {
+                                    "id": 1,
+                                    "aportio_id": "1111",
+                                    "customer_id": 1,
+                                    "user_id": 1,
+                                    "short_title": "Broken laptop",
+                                    "_created": "2020-04-12T14:39:+13:00",
+                                    "status": "OPEN",
+                                    "classification": "incident",
+                                    "_links": {
+                                        "self": {
+                                            "href": "/tickets/1"
+                                        }
+                                    }
+                                }
+                            ]
+                        },
+                        "_links": {
+                            "self": {
+                                "href": "/users/1/tickets"
+                            },
+                            "contained_in": {
+                                "href": "/users/1"
+                            }
+                        }
+                    }
+      servers:
+      - url: https://ccfa5f41.au.ngrok.io
+    servers:
+    - url: https://ccfa5f41.au.ngrok.io
+  /users/<id>:
+    get:
+      tags:
+      - Users
+      summary: GET a specific user resource by user ID
+      description: GET a specific user resource by user ID. Returns 200 if user is
+        found, or returns 404 if no user is found with that ID.
+      responses:
+        "200":
+          description: Auto generated using Swagger Inspector
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/inline_response_200_3'
+              examples:
+                "0":
+                  value: |
+                    {
+                        "id": 1,
+                        "email": [
+                            "some@user.com"
+                        ],
+                        "_links": {
+                            "self": {
+                                "href": "/users/1"
+                            },
+                            "contained_in": {
+                                "href": "/users"
+                            },
+                            "customers": {
+                                "href": "/users/1/customers/"
+                            },
+                            "tickets": {
+                                "href": "/users/1/tickets"
+                            }
+                        }
+                    }
+      servers:
+      - url: https://ccfa5f41.au.ngrok.io
+    servers:
+    - url: https://ccfa5f41.au.ngrok.io
+  /users/1/customers/:
+    get:
+      tags:
+      - Users
+      summary: GET customer resources for a specific user
+      description: GET the customer resources for a specific user by user ID. Returns
+        200 if the user is valid. Returns 404 if the user ID doesn't exist.
+      responses:
+        "200":
+          description: Auto generated using Swagger Inspector
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/inline_response_200_4'
+              examples:
+                "0":
+                  value: |
+                    {
+                        "total_queried": 3,
+                        "_embedded": {
+                            "customers": [
+                                {
+                                    "id": 1,
+                                    "name": "Foo Company",
+                                    "_created": "",
+                                    "_links": {
+                                        "self": {
+                                            "href": "/customers/1"
+                                        }
+                                    }
+                                },
+                                {
+                                    "id": 2,
+                                    "name": "Bar Company",
+                                    "_created": "",
+                                    "_links": {
+                                        "self": {
+                                            "href": "/customers/2"
+                                        }
+                                    }
+                                },
+                                {
+                                    "id": 3,
+                                    "name": "Foobar Company",
+                                    "_created": "",
+                                    "_links": {
+                                        "self": {
+                                            "href": "/customers/3"
+                                        }
+                                    }
+                                }
+                            ]
+                        },
+                        "_links": {
+                            "self": {
+                                "href": "/users/1/customers/"
+                            },
+                            "contained_in": {
+                                "href": "/users/1"
+                            }
+                        }
+                    }
+      servers:
+      - url: https://ccfa5f41.au.ngrok.io
+    servers:
+    - url: https://ccfa5f41.au.ngrok.io
+  /:
+    get:
+      tags:
+      - Root
+      summary: GET root
+      description: Example of getting the root level resource. Returns a 200.
+      responses:
+        "200":
+          description: Auto generated using Swagger Inspector
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/inline_response_200_5'
+              examples:
+                "0":
+                  value: |
+                    {
+                        "_links": {
+                            "self": {
+                                "href": "/"
+                            },
+                            "users": {
+                                "href": "/users"
+                            },
+                            "customers": {
+                                "href": "/customers"
+                            },
+                            "tickets": {
+                                "href": "/tickets"
+                            },
+                            "comments": {
+                                "href": "/comments"
+                            },
+                            "customer_user_associations": {
+                                "href": "/customer_user_associations"
+                            }
+                        }
+                    }
+      servers:
+      - url: https://ccfa5f41.au.ngrok.io
+    post:
+      tags:
+      - Root
+      summary: POST to root
+      description: A POST request to the root level. This isn't allowed and therefore
+        returns a 405.
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/body'
+            examples:
+              "0":
+                value: |-
+                  {
+                      "user_id"        : 1,
+                      "customer_id"    : 1,
+                      "aportio_id"     : "12233",
+                      "short_title"    : "Laptop is broken",
+                      "status"         : "OPEN",
+                      "classification" : {"l1" : "service-request"},
+                      "custom_fields"  : {
+                          "foo"            : "bar",
+                          "something_else" : [1, 2, "xyz"]
+                      }
+                  }
+      responses:
+        "405":
+          description: Auto generated using Swagger Inspector
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/inline_response_405'
+              examples:
+                "0":
+                  value: |
+                    {
+                        "message": "The method is not allowed for the requested URL."
+                    }
+      servers:
+      - url: https://ccfa5f41.au.ngrok.io
+    servers:
+    - url: https://ccfa5f41.au.ngrok.io
+components:
+  schemas:
+    inline_response_200:
+      type: object
+      properties:
+        _embedded:
+          $ref: '#/components/schemas/inline_response_200__embedded'
+        _links:
+          $ref: '#/components/schemas/inline_response_200__links'
+        total_queried:
+          type: integer
+    inline_response_200_1:
+      type: object
+      properties:
+        _embedded:
+          $ref: '#/components/schemas/inline_response_200_1__embedded'
+        _links:
+          $ref: '#/components/schemas/inline_response_200__links'
+        total_queried:
+          type: integer
+    inline_response_200_2:
+      type: object
+      properties:
+        short_title:
+          type: string
+        long_text:
+          type: string
+        user_id:
+          type: integer
+        _embedded:
+          $ref: '#/components/schemas/inline_response_200_2__embedded'
+        _links:
+          $ref: '#/components/schemas/inline_response_200_2__links'
+        custom_fields:
+          $ref: '#/components/schemas/inline_response_200_2_custom_fields'
+        _created:
+          type: string
+        aportio_id:
+          type: string
+        id:
+          type: integer
+        customer_id:
+          type: integer
+        classification:
+          $ref: '#/components/schemas/inline_response_200_2_classification'
+        status:
+          type: string
+    inline_response_200_3:
+      type: object
+      properties:
+        _links:
+          $ref: '#/components/schemas/inline_response_200_3__links'
+        id:
+          type: integer
+        email:
+          type: array
+          items:
+            type: string
+    inline_response_200_4:
+      type: object
+      properties:
+        _embedded:
+          $ref: '#/components/schemas/inline_response_200_4__embedded'
+        _links:
+          $ref: '#/components/schemas/inline_response_200__links'
+        total_queried:
+          type: integer
+    inline_response_200_5:
+      type: object
+      properties:
+        _links:
+          $ref: '#/components/schemas/inline_response_200_5__links'
+    _custom_fields:
+      type: object
+      properties:
+        foo:
+          type: string
+        something_else:
+          type: array
+          items:
+            type: integer
+    _classification:
+      type: object
+      properties:
+        l1:
+          type: string
+    body:
+      type: object
+      properties:
+        short_title:
+          type: string
+        user_id:
+          type: integer
+        custom_fields:
+          $ref: '#/components/schemas/_custom_fields'
+        aportio_id:
+          type: string
+        customer_id:
+          type: integer
+        classification:
+          $ref: '#/components/schemas/_classification'
+        status:
+          type: string
+    inline_response_405:
+      type: object
+      properties:
+        message:
+          type: string
+    inline_response_200__embedded__links_self:
+      type: object
+      properties:
+        href:
+          type: string
+    inline_response_200__embedded__links:
+      type: object
+      properties:
+        self:
+          $ref: '#/components/schemas/inline_response_200__embedded__links_self'
+    inline_response_200__embedded_users:
+      type: object
+      properties:
+        _links:
+          $ref: '#/components/schemas/inline_response_200__embedded__links'
+        _created:
+          type: string
+        id:
+          type: integer
+        email:
+          type: array
+          items:
+            type: string
+    inline_response_200__embedded:
+      type: object
+      properties:
+        users:
+          type: array
+          items:
+            $ref: '#/components/schemas/inline_response_200__embedded_users'
+    inline_response_200__links:
+      type: object
+      properties:
+        contained_in:
+          $ref: '#/components/schemas/inline_response_200__embedded__links_self'
+        self:
+          $ref: '#/components/schemas/inline_response_200__embedded__links_self'
+    inline_response_200_1__embedded_tickets:
+      type: object
+      properties:
+        short_title:
+          type: string
+        user_id:
+          type: integer
+        _links:
+          $ref: '#/components/schemas/inline_response_200__embedded__links'
+        _created:
+          type: string
+        aportio_id:
+          type: string
+        id:
+          type: integer
+        customer_id:
+          type: integer
+        classification:
+          type: string
+        status:
+          type: string
+    inline_response_200_1__embedded:
+      type: object
+      properties:
+        tickets:
+          type: array
+          items:
+            $ref: '#/components/schemas/inline_response_200_1__embedded_tickets'
+    inline_response_200_2__embedded_worknotes:
+      type: object
+      properties:
+        user_id:
+          type: integer
+        _links:
+          $ref: '#/components/schemas/inline_response_200__embedded__links'
+        _created:
+          type: string
+        _updated:
+          type: string
+        id:
+          type: integer
+        text:
+          type: string
+    inline_response_200_2__embedded:
+      type: object
+      properties:
+        worknotes:
+          type: array
+          items:
+            $ref: '#/components/schemas/inline_response_200_2__embedded_worknotes'
+        comments:
+          type: array
+          items:
+            $ref: '#/components/schemas/inline_response_200_2__embedded_worknotes'
+    inline_response_200_2__links:
+      type: object
+      properties:
+        contained_in:
+          $ref: '#/components/schemas/inline_response_200__embedded__links_self'
+        self:
+          $ref: '#/components/schemas/inline_response_200__embedded__links_self'
+        user:
+          $ref: '#/components/schemas/inline_response_200__embedded__links_self'
+        customer:
+          $ref: '#/components/schemas/inline_response_200__embedded__links_self'
+    inline_response_200_2_custom_fields:
+      type: object
+      properties:
+        department:
+          type: string
+    inline_response_200_2_classification:
+      type: object
+      properties:
+        l1:
+          type: string
+        l2:
+          type: string
+    inline_response_200_3__links:
+      type: object
+      properties:
+        contained_in:
+          $ref: '#/components/schemas/inline_response_200__embedded__links_self'
+        tickets:
+          $ref: '#/components/schemas/inline_response_200__embedded__links_self'
+        self:
+          $ref: '#/components/schemas/inline_response_200__embedded__links_self'
+        customers:
+          $ref: '#/components/schemas/inline_response_200__embedded__links_self'
+    inline_response_200_4__embedded_customers:
+      type: object
+      properties:
+        _links:
+          $ref: '#/components/schemas/inline_response_200__embedded__links'
+        _created:
+          type: string
+        name:
+          type: string
+        id:
+          type: integer
+    inline_response_200_4__embedded:
+      type: object
+      properties:
+        customers:
+          type: array
+          items:
+            $ref: '#/components/schemas/inline_response_200_4__embedded_customers'
+    inline_response_200_5__links:
+      type: object
+      properties:
+        tickets:
+          $ref: '#/components/schemas/inline_response_200__embedded__links_self'
+        comments:
+          $ref: '#/components/schemas/inline_response_200__embedded__links_self'
+        customer_user_associations:
+          $ref: '#/components/schemas/inline_response_200__embedded__links_self'
+        self:
+          $ref: '#/components/schemas/inline_response_200__embedded__links_self'
+        customers:
+          $ref: '#/components/schemas/inline_response_200__embedded__links_self'
+        users:
+          $ref: '#/components/schemas/inline_response_200__embedded__links_self'
